@@ -6,8 +6,8 @@ const int MIN_DEGREE = 2;
 class BTreeNode {
 public:
     bool is_leaf;
-    std::vector<int> keys;
-    std::vector<BTreeNode*> children;
+    vector<int> keys;
+    vector<BTreeNode*> children;
 
     BTreeNode(bool _is_leaf) : is_leaf(_is_leaf) {}
 
@@ -77,7 +77,7 @@ void BTreeNode::traverse() {
     for (i = 0; i < keys.size(); i++) {
         if (!is_leaf)
             children[i]->traverse();
-        std::cout << keys[i] << " ";
+        cout << keys[i] << " ";
     }
 
     if (!is_leaf)
@@ -126,7 +126,7 @@ BTreeNode* BTree::search(int key) {
 }
 
 void BTree::remove(int key) {
-    std::cout << "Deletion not implemented in this example." << std::endl;
+    cout << "Deletion not implemented in this example." << endl;
 }
 
 int main() {
@@ -136,42 +136,42 @@ int main() {
     BTreeNode* result = nullptr;
 
     do {
-        std::cout << "1. Insert key\n";
-        std::cout << "2. Search key\n";
-        std::cout << "3. Print B-tree\n";
-        std::cout << "4. Quit\n";
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        cout << "1. Insert key\n";
+        cout << "2. Search key\n";
+        cout << "3. Print B-tree\n";
+        cout << "4. Quit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
 
         switch (choice) {
             case 1:
-                std::cout << "Enter key to insert: ";
-                std::cin >> key;
+                cout << "Enter key to insert: ";
+                cin >> key;
                 btree.insert(key);
                 break;
 
             case 2:
-                std::cout << "Enter key to search: ";
-                std::cin >> key;
+                cout << "Enter key to search: ";
+                cin >> key;
                 result = btree.search(key);
                 if (result != nullptr)
-                    std::cout << "Key " << key << " found in the B-tree." << std::endl;
+                    cout << "Key " << key << " found in the B-tree." << endl;
                 else
-                    std::cout << "Key " << key << " not found in the B-tree." << std::endl;
+                    cout << "Key " << key << " not found in the B-tree." << endl;
                 break;
 
             case 3:
-                std::cout << "B-tree traversal: ";
+                cout << "B-tree traversal: ";
                 btree.traverse();
-                std::cout << std::endl;
+                cout << endl;
                 break;
 
             case 4:
-                std::cout << "Exiting program.\n";
+                cout << "Exiting program.\n";
                 break;
 
             default:
-                std::cout << "Invalid choice. Please try again.\n";
+                cout << "Invalid choice. Please try again.\n";
         }
 
     } while (choice != 4);
