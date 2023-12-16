@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+using namespace std;
 const int MIN_DEGREE = 2;
 
 class BTreeNode {
